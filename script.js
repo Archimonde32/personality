@@ -1,5 +1,5 @@
 
-// Sélectionnez tous les éléments li de classe "accordion-image"
+// Sélectionnez tous les éléments li 
 const accordionItems = document.querySelectorAll('.accordion-image');
 const buttonItems = document.querySelectorAll('.button-section li.button');
 
