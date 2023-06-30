@@ -1,47 +1,53 @@
 
-// const images = document.getElementsByClassName("accordion-image");
-// for (var i = 0; i < images.length; i++) {
-// images[i].addEventListener("click", toggleImageColor);
-// }
+// Sélectionnez tous les éléments li de classe "accordion-image"
+const accordionItems = document.querySelectorAll('.accordion-image');
+const buttonItems = document.querySelectorAll('.button-section li.button');
 
 
-// function toggleImageColor(event) {
-// const bwDiv = event.currentTarget.querySelector(".bw");
-// const colorDiv = event.currentTarget.querySelector(".color");
+// Parcourez les éléments et ajoutez un gestionnaire d'événements
+accordionItems.forEach(item => {
+    item.addEventListener('click', toggleAccordion);
+});
 
-
-// if (bwDiv.style.display === "none") {
-//     bwDiv.style.display = "block";
-//     colorDiv.style.display = "none";
-// } else {
-//     bwDiv.style.display = "none";
-//     colorDiv.style.display = "block";
-// }
-// }
-var accordionImages = document.getElementsByClassName("accordion-image");
-var accordionContents = document.getElementsByClassName("accordion-content");
-
-for (var i = 0; i < accordionImages.length; i++) {
-  accordionImages[i].addEventListener("click", toggleAccordion);
-}
-
+// Fonction pour basculer l'accordéon
 function toggleAccordion(event) {
-  var listItem = event.currentTarget.parentNode;
-  var accordionContent = listItem.querySelector(".accordion-content");
-  
-  if (listItem.classList.contains("active")) {
-    listItem.classList.remove("active");
-    accordionContent.style.display = "none";
-  } else {
-    closeAllAccordions();
-    listItem.classList.add("active");
-    accordionContent.style.display = "block";
-  }
+    const currentItem = event.currentTarget.parentNode;
+    const isActive = currentItem.classList.contains('active');
+
+    // Fermez tous les éléments li actifs
+    const activeItems = document.querySelectorAll('li.active');
+    activeItems.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Ouvrez l'élément li correspondant à l'image cliquée
+    if (!isActive) {
+        currentItem.classList.add('active');
+    }
 }
 
-function closeAllAccordions() {
-  for (var i = 0; i < accordionContents.length; i++) {
-    accordionContents[i].style.display = "none";
-    accordionContents[i].parentNode.classList.remove("active");
-  }
+
+
+// Parcourez les éléments et ajoutez un gestionnaire d'événements aux boutons
+buttonItems.forEach(item => {
+    item.addEventListener('click', navigateToActress);
+});
+
+// Fonction pour naviguer vers l'actrice correspondante
+function navigateToActress(event) {
+    const button = event.currentTarget;
+    const actressIndex = button.getAttribute('data-index');
+
+    // Fermez tous les éléments li actifs
+    const activeItems = document.querySelectorAll('li.active');
+    activeItems.forEach(item => {
+        item.classList.remove('active');
+    });
+
+    // Ouvrez l'élément li correspondant à l'actrice cliquée
+    const actressItem = document.querySelector(`.accordion-image[id="${actressIndex}"]`);
+    if (actressItem) {
+        const parentItem = actressItem.parentNode;
+        parentItem.classList.add('active');
+    }
 }

@@ -25,13 +25,24 @@ header h1
     text-transform: uppercase;
     text-shadow: 2px 2px 2px #000;       
 }
-p,h2,h3{
-    font-family:'Limelight' ;
-}
-h2{
-    
-}
 
+h2{
+    font-family: 'Limelight';
+    padding: 25px;
+}
+p{
+    font-family: 'Lobster';
+}
+.accordion-content h3{
+    border: 2px solid blue;
+    font-family: 'Lobster';
+    border-radius: 5px;
+    padding: 5px;
+    margin: 25px;
+    color: #fff;
+    background-color: blue;
+
+}
 
 ul {
     display: flex;
@@ -45,7 +56,14 @@ li{
     display: flex;
     align-items: flex-start;
 }
-li:active .accordion-content{
+.accordion-content{
+    display: none;
+    opacity: 0;
+    transition:opacity 0.3s ease-out ;
+}
+li.active .accordion-content{
+    opacity: 1;
+    max-height: 500px;
     display: block;
     
 }
@@ -113,21 +131,12 @@ li.active .accordion-image .color{
 
 .accordion-content{
 display: none;
-width: 200px;
+width: 300px;
 height: 500px;
 background-color: #fff;
 text-align: center;
 }
-
-
-#button-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-#button-list li {
+.button-section li.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,17 +146,17 @@ text-align: center;
     cursor: pointer;
 }
 
-#button-list li:last-child {
+.button-section li.button:last-child {
     margin-right: 0;
 }
 
-
-
-
-
-
-
-
+.button-section li.button.active {
+    background-color: #f0f0f0;
+    color: #000;
+}
+.button-section{
+    margin:50px ;
+}
 
 
 
