@@ -18,10 +18,14 @@
 		<header>
 			<h1>Top 5 des meilleures personnalités</h1>
 		</header>
-		<section>
+		<section id="accordion1">
+			<div class="location">
+				<img src="./images/map.png" alt="map">
+				<div class="pointer"></div>
+			</div>
 				<ul>
 					<li>
-						<div class="accordion-image" id="img1">
+						<div class="accordion-image" id="img1" data-location="location1">
 								<div class="bw"></div>
 								<div class="color"></div>
 							</div>
@@ -37,7 +41,7 @@
 							</div>
 					</li>
 					<li>
-							<div class="accordion-image" id="img2">
+							<div class="accordion-image" id="img2" data-location="location2">
 								<div class="bw"></div>
 								<div class="color"></div>
 							</div>
@@ -53,7 +57,7 @@
 							</div>
 					</li>
 					<li class="active">
-							<div class="accordion-image" id="img3">
+							<div class="accordion-image" id="img3" data-location="location3">
 								<div class="bw"></div>
 								<div class="color"></div>
 							</div>
@@ -69,7 +73,7 @@
 							</div>
 					</li>
 					<li>
-							<div class="accordion-image" id="img4">
+							<div class="accordion-image" id="img4" data-location="location4">
 								<div class="bw"></div>
 								<div class="color"></div>
 							</div>
@@ -85,7 +89,7 @@
 							</div>
 					</li>
 					<li>
-							<div class="accordion-image" id="img5">
+							<div class="accordion-image" id="img5" data-location="location5">
 								<div class="bw"></div>
 								<div class="color"></div>
 							</div>
@@ -104,13 +108,14 @@
 		</section>
 		<section class="button-section">
 			<ul id="button-list">
-				<li class="button" data-index="img1">DWAYNE <br> JOHNSON</li>
-				<li class="button" data-index="img2">VIN <br> DIESEL</li>
-				<li class="button" data-index="img3">IMEN <br> ES</li>
-				<li class="button" data-index="img4">JESSICA <br> ALBA</li>
-				<li class="button" data-index="img5">ZITA <br>HANROT</li>
+				<li class="button" data-index="img1" data-location="location1">DWAYNE <br> JOHNSON</li>
+				<li class="button" data-index="img2" data-location="location2">VIN <br> DIESEL</li>
+				<li class="button" data-index="img3" data-location="location3">IMEN <br> ES</li>
+				<li class="button" data-index="img4" data-location="location4">JESSICA <br> ALBA</li>
+				<li class="button" data-index="img5" data-location="location5">ZITA <br>HANROT</li>
 			</ul>
 		</section>
+		
 		<script src="script.js"></script>
 	</body>
 </html>

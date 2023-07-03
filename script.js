@@ -1,53 +1,85 @@
-
-// Sélectionnez tous les éléments li 
 const accordionItems = document.querySelectorAll('.accordion-image');
 const buttonItems = document.querySelectorAll('.button-section li.button');
 
-
-// Parcourez les éléments et ajoutez un gestionnaire d'événements
 accordionItems.forEach(item => {
     item.addEventListener('click', toggleAccordion);
 });
 
-// Fonction pour basculer l'accordéon
 function toggleAccordion(event) {
     const currentItem = event.currentTarget.parentNode;
-    const isActive = currentItem.classList.contains('active');
+    const local = event.currentTarget;
+    const location = local.getAttribute('data-location');
+    currentItem.classList.toggle('active');
 
-    // Fermez tous les éléments li actifs
+    const pointer = document.querySelector('.pointer');
+    pointer.style.top = calculatePointerTop(location);
+    pointer.style.left = calculatePointerLeft(location);
+
     const activeItems = document.querySelectorAll('li.active');
     activeItems.forEach(item => {
-        item.classList.remove('active');
+        if (item !== currentItem) {
+            item.classList.remove('active');
+        }
     });
-
-    // Ouvrez l'élément li correspondant à l'image cliquée
-    if (!isActive) {
-        currentItem.classList.add('active');
-    }
 }
 
-
-
-// Parcourez les éléments et ajoutez un gestionnaire d'événements aux boutons
 buttonItems.forEach(item => {
     item.addEventListener('click', navigateToActress);
 });
 
-// Fonction pour naviguer vers l'actrice correspondante
 function navigateToActress(event) {
     const button = event.currentTarget;
     const actressIndex = button.getAttribute('data-index');
+    const local = event.currentTarget;
+    const location = local.getAttribute('data-location');
+    const actressItem = document.querySelector(`.accordion-image[id="${actressIndex}"]`);
 
-    // Fermez tous les éléments li actifs
+    const pointer = document.querySelector('.pointer');
+    pointer.style.top = calculatePointerTop(location);
+    pointer.style.left = calculatePointerLeft(location);
+
+    const parentItem = actressItem.parentNode;
+    parentItem.classList.add('active');
     const activeItems = document.querySelectorAll('li.active');
     activeItems.forEach(item => {
-        item.classList.remove('active');
+        if (item !== parentItem) {
+            item.classList.remove('active');
+        }
     });
+}
 
-    // Ouvrez l'élément li correspondant à l'actrice cliquée
-    const actressItem = document.querySelector(`.accordion-image[id="${actressIndex}"]`);
-    if (actressItem) {
-        const parentItem = actressItem.parentNode;
-        parentItem.classList.add('active');
+
+function calculatePointerTop(location) {
+    // Calculer la valeur top en fonction de l'emplacement
+    // Retourner la valeur en pixels
+    if (location === 'location1' ) {
+        return '120px';
+    } else if (location === 'location2') {
+        return '120px';
+    } else if (location === 'location3') {
+        return '110px';
+    }else if (location === 'location4') {
+        return '120px';
+    }else if (location === 'location5' ) {
+        return '110px';
     }
 }
+
+function calculatePointerLeft(location) {
+    // Calculer la valeur left en fonction de l'emplacement
+    // Retourner la valeur en pixels
+    if (location === 'location1') {
+        return '60px';
+    } else if (location === 'location2' ) {
+        return '60px';
+    } else if (location === 'location3') {
+        return '192px';
+    }else if (location === 'location4' ) {
+        return '60px';
+    }else if (location === 'location5' ) {
+        return '192px';
+    }
+}
+
+
+
